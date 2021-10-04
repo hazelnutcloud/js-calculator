@@ -104,7 +104,7 @@ function handleOneToNine(num) {
         newNum.set(num);
         expression.update(e => e.slice(0, -1) + num);
     } else {
-        if (nextNum){
+        if (nextNum) {
             newNum.set('');
             nextNum = false;
         };
@@ -119,8 +119,8 @@ function handleZero() {
     const startsWithZero = /^0/;
     if (nextCalc) expression.set('');
     if (startsWithZero.test(newNumValue) && !isDecimal.test(newNumValue)) return;
-    else{
-        if (nextNum){
+    else {
+        if (nextNum) {
             newNum.set('');
             nextNum = false;
         };
@@ -129,10 +129,10 @@ function handleZero() {
     };
 }
 function handleDecimal() {
-    if (nextNum){
+    if (nextNum) {
         newNum.set('');
         nextNum = false;
-        newNum.update(n => n + '.');        
+        newNum.update(n => n + '.');
         expression.update(e => e + '.');
     } else if (isDecimal.test(newNumValue)) return;
     else {
@@ -184,12 +184,12 @@ function handleNextCalc(callback) {
 function handleEquals() {
     if (expressionValue == 0 || nextCalc) return;
     const cleanedExpression =
-    expressionValue
-    .replace('×', '*')
-    .replace('÷', '/')
-    .replace(/(--)/g, '+')
-    .replace(endsWithOperator, '')
-    .replace(endsWithOperator, '');
+        expressionValue
+            .replace('×', '*')
+            .replace('÷', '/')
+            .replace(/(--)/g, '+')
+            .replace(endsWithOperator, '')
+            .replace(endsWithOperator, '');
     console.log(cleanedExpression);
     result = eval(cleanedExpression);
     console.log(result);
