@@ -186,11 +186,11 @@ function handleEquals() {
     if (expressionValue == 0 || nextCalc) return;
     const cleanedExpression =
         expressionValue
+            .replace(endsWithOperator, '')
+            .replace(endsWithOperator, '')
             .replace('×', '*')
             .replace('÷', '/')
-            .replace(/(--)/g, '+')
-            .replace(endsWithOperator, '')
-            .replace(endsWithOperator, '');
+            .replace(/(--)/g, '+');
     console.log(cleanedExpression);
     result = eval(cleanedExpression);
     console.log(result);
