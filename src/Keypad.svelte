@@ -8,7 +8,7 @@
         <button
             id={key}
             class="key {keys[key].class} unselectable"
-            on:click={keys[key].function}
+            on:click={keys[key].handler}
         >
             <div>{keys[key].display}</div>
         </button>

@@ -3,87 +3,87 @@ export const keys = {
     zero: {
         display: '0',
         class: 'row-5',
-        function: () => handleNextCalc(handleZero),
+        handler: () => handleNextCalc(handleZero),
     },
     one: {
         display: '1',
         class: 'col-1 row-4',
-        function: () => handleNextCalc(() => handleOneToNine('1')),
+        handler: () => handleNextCalc(() => handleOneToNine('1')),
     },
     two: {
         display: '2',
         class: 'col-2 row-4',
-        function: () => handleNextCalc(() => handleOneToNine('2')),
+        handler: () => handleNextCalc(() => handleOneToNine('2')),
     },
     three: {
         display: '3',
         class: 'col-3 row-4',
-        function: () => handleNextCalc(() => handleOneToNine('3')),
+        handler: () => handleNextCalc(() => handleOneToNine('3')),
     },
     four: {
         display: '4',
         class: 'col-1 row-3',
-        function: () => handleNextCalc(() => handleOneToNine('4')),
+        handler: () => handleNextCalc(() => handleOneToNine('4')),
     },
     five: {
         display: '5',
         class: 'col-2 row-3',
-        function: () => handleNextCalc(() => handleOneToNine('5')),
+        handler: () => handleNextCalc(() => handleOneToNine('5')),
     },
     six: {
         display: '6',
         class: 'col-3 row-3',
-        function: () => handleNextCalc(() => handleOneToNine('6')),
+        handler: () => handleNextCalc(() => handleOneToNine('6')),
     },
     seven: {
         display: '7',
         class: 'col-1 row-2',
-        function: () => handleNextCalc(() => handleOneToNine('7')),
+        handler: () => handleNextCalc(() => handleOneToNine('7')),
     },
     eight: {
         display: '8',
         class: 'col-2 row-2',
-        function: () => handleNextCalc(() => handleOneToNine('8')),
+        handler: () => handleNextCalc(() => handleOneToNine('8')),
     },
     nine: {
         display: '9',
         class: 'col-3 row-2',
-        function: () => handleNextCalc(() => handleOneToNine('9')),
+        handler: () => handleNextCalc(() => handleOneToNine('9')),
     },
     decimal: {
         display: '.',
         class: 'col-3 row-5',
-        function: () => handleNextCalc(handleDecimal),
+        handler: () => handleNextCalc(handleDecimal),
     },
     equals: {
         display: '=',
         class: 'col-4 secondary',
-        function: handleEquals,
+        handler: handleEquals,
     },
     add: {
         display: '+',
         class: 'col-4 secondary',
-        function: () => handleNextCalc(handleAdd),
+        handler: () => handleNextCalc(handleAdd),
     },
     subtract: {
         display: '-',
         class: 'col-4 row-1 secondary',
-        function: () => handleNextCalc(handleSubtract),
+        handler: () => handleNextCalc(handleSubtract),
     },
     multiply: {
         display: '×',
         class: 'col-3 row-1 secondary',
-        function: () => handleNextCalc(handleMultiply),
+        handler: () => handleNextCalc(handleMultiply),
     },
     divide: {
         display: '÷',
         class: 'col-2 row-1 secondary',
-        function: () => handleNextCalc(handleDivide),
+        handler: () => handleNextCalc(handleDivide),
     },
     clear: {
         display: 'AC',
         class: 'col-1 row-1 secondary',
-        function: handleClear,
+        handler: handleClear,
     },
 };
 
@@ -129,6 +129,7 @@ function handleZero() {
     };
 }
 function handleDecimal() {
+    if (nextCalc) expression.set('');
     if (nextNum) {
         newNum.set('');
         nextNum = false;
