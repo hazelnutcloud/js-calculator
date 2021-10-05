@@ -100,7 +100,7 @@ let nextCalc = false;
 function handleOneToNine(num) {
     const startsWithZero = /^0/;
     if (nextCalc) expression.set('');
-    if (startsWithZero.test(newNumValue) && !isDecimal.test(newNumValue)) {
+    if (startsWithZero.test(newNumValue) && !isDecimal.test(newNumValue) && !nextNum) {
         newNum.set(num);
         expression.update(e => e.slice(0, -1) + num);
     } else {
@@ -118,7 +118,7 @@ const isDecimal = /\d*(?=\.)/;
 function handleZero() {
     const startsWithZero = /^0/;
     if (nextCalc) expression.set('');
-    if (startsWithZero.test(newNumValue) && !isDecimal.test(newNumValue)) return;
+    if (startsWithZero.test(newNumValue) && !isDecimal.test(newNumValue) && !nextNum) return;
     else {
         if (nextNum) {
             newNum.set('');
